@@ -1,0 +1,18 @@
+plugins {
+	id "java"
+	id "org.jetbrains.intellij" version "0.2.5"
+}
+
+version = '1.0'
+intellij {
+	// @see https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases
+	version '14' // pick from https://www.jetbrains.com/intellij-repository/releases
+	pluginName 'multi-ssr-inspection'
+	instrumentCode false
+	sameSinceUntilBuild true
+	downloadSources false // only available since 141.712.1 (14.1.2 EAP)
+}
+patchPluginXml {
+	untilBuild null
+	pluginDescription 'Workaround for https://youtrack.jetbrains.com/issue/IDEA-168056'
+}

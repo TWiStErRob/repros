@@ -1,0 +1,54 @@
+<idea-plugin>
+	<id>multi-ssr-inspection</id>
+	<name>Multi-Structural Search Inspections</name>
+	<category>Inspection</category>
+	<vendor>TWiStErRob</vendor>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<localInspection
+			language="JAVA"
+			shortName="SSBasedInspection1"
+			bundle="messages.SSRBundle"
+			key="SSRInspection.display.name"
+			groupName="General"
+			enabledByDefault="false"
+			level="ERROR"
+			implementationClass="net.twisterrob.intellij.inspection.SSBasedInspection1" />
+		<localInspection
+			language="JAVA"
+			shortName="SSBasedInspection2"
+			bundle="messages.SSRBundle"
+			key="SSRInspection.display.name"
+			groupName="General"
+			enabledByDefault="false"
+			level="WARNING"
+			implementationClass="net.twisterrob.intellij.inspection.SSBasedInspection2" />
+		<localInspection
+			language="JAVA"
+			shortName="SSBasedInspection3"
+			bundle="messages.SSRBundle"
+			key="SSRInspection.display.name"
+			groupName="General"
+			enabledByDefault="false"
+			level="WEAK WARNING"
+			implementationClass="net.twisterrob.intellij.inspection.SSBasedInspection3" />
+		<localInspection
+			language="JAVA"
+			shortName="SSBasedInspection4"
+			bundle="messages.SSRBundle"
+			key="SSRInspection.display.name"
+			groupName="General"
+			enabledByDefault="false"
+			level="INFORMATION"
+			implementationClass="net.twisterrob.intellij.inspection.SSBasedInspection4" />
+		<localInspection
+			language="JAVA"
+			shortName="SSBasedInspection5"
+			bundle="messages.SSRBundle"
+			key="SSRInspection.display.name"
+			groupName="General"
+			enabledByDefault="false"
+			level="TYPO"
+			implementationClass="net.twisterrob.intellij.inspection.SSBasedInspection5" />
+	</extensions>
+</idea-plugin>
