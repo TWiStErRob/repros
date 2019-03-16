@@ -1,0 +1,4 @@
+excerpt_separator: "<!--more-->"
+markdown: kramdown
+kramdown:
+  show_warnings: true
