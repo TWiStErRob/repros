@@ -1,9 +1,10 @@
 https://github.com/jekyll/jekyll-feed/issues/269
+https://github.com/jekyll/jekyll/issues/7576
 
 ## Repro
 ```shell
 bundle install
-bundle exec jekyll build
+bundle exec jekyll build --safe
 ```
 
 ## Expected
