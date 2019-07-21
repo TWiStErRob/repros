@@ -1,0 +1,17 @@
+plugins {
+	id 'java'
+}
+
+ext.ver = [
+		neo4j_ogm: '3.2.0-RC1' // 3.1.0 works, 3.2.0-alpha02 works, 3.2.0-RC1 doesn't
+]
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+dependencies {
+	implementation("org.neo4j:neo4j-ogm-core:${ver.neo4j_ogm}")
+	testImplementation("org.neo4j:neo4j-ogm-test:${ver.neo4j_ogm}")
+}
