@@ -1,0 +1,18 @@
+plugins {
+	id 'java'
+	id 'com.github.ben-manes.versions' version '0.21.0'
+}
+
+ext.ver = [
+		neo4j: '3.3.6',
+]
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	runtimeOnly("org.neo4j:neo4j-cypher:${ver.neo4j}")
+	runtimeOnly("org.neo4j:neo4j-kernel:${ver.neo4j}") { transitive = true }
+	testImplementation "org.neo4j.test:neo4j-harness:${ver.neo4j}"
+}
