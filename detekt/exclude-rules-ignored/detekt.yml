@@ -1,0 +1,12 @@
+test-pattern: # Configure exclusions for test sources
+  active: true
+  patterns: # Test file regexes (make sure they're platform independent)
+    - '.*[/\\]test[/\\].*'
+    - '.*Test.kt'
+  exclude-rules:
+    - 'UnusedImports'
+
+style:
+  active: true
+  UnusedImports:
+    active: true
