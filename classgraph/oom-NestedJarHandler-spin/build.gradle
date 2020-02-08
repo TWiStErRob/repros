@@ -1,0 +1,20 @@
+plugins {
+	id 'java'
+}
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	implementation "io.github.classgraph:classgraph:4.8.62"
+	// contains !/lib/lucene-backward-codecs-5.5.0.jar, runtimeOnly because it's only needed to be scanned
+	runtimeOnly "org.neo4j:neo4j-lucene-upgrade:3.4.9"
+}
+
+task run(type: JavaExec) {
+	description = "Repro"
+	main = 'pack.age.Main'
+	classpath = sourceSets.main.runtimeClasspath
+	jvmArgs '-Xmx128M'
+}
