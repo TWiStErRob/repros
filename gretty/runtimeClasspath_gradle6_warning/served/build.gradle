@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+apply plugin: 'org.gretty'
+
+repositories {
+	jcenter() // for servled/websocket
+}
+
+dependencies {
+	implementation project(":lib")
+}
