@@ -1,0 +1,15 @@
+def printProps(where) {
+	println "In $project ($where):"
+	println "\tPROP_1=${PROP_1}"
+	println "\tPROP_2=${PROP_2}"
+	println "\tPROP_3=${PROP_3}"
+	if (hasProperty('PROP_4')) println "\tPROP_4=${PROP_4}"
+	if (hasProperty('PROP_5')) println "\tPROP_5=${PROP_5}"
+}
+printProps("normal"); afterEvaluate { project -> printProps("afterEvaluate"); }
+
+tasks.register("props") {
+	doLast {
+		printProps("doLast")
+	}
+}

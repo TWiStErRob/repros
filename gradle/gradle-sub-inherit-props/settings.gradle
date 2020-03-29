@@ -1,0 +1,3 @@
+include ':sub'
+include ':sub:p1'
+include ':sub:p2'
