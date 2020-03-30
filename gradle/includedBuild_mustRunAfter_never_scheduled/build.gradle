@@ -1,0 +1,19 @@
+println("includer build.gradle")
+
+tasks.register("depending") {
+	println("configuring $it")
+	dependsOn(gradle.includedBuild("included").task(":depended"))
+	doLast { println("executed $it") }
+}
+
+tasks.register("order") {
+	println("configuring $it")
+	mustRunAfter(gradle.includedBuild("included").task(":depended"))
+	doLast { println("executed $it") }
+}
+
+tasks.register("order-ok") {
+	println("configuring $it")
+	mustRunAfter(tasks.named("order"))
+	doLast { println("executed $it") }
+}

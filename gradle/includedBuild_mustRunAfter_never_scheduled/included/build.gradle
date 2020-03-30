@@ -1,0 +1,6 @@
+println("included build.gradle")
+
+tasks.register("depended") {
+	println("configuring $it")
+	doLast { println("executed $it") }
+}
