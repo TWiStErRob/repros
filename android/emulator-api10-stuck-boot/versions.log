@@ -1,0 +1,45 @@
+Versions
+
+
+systeminfo
+OS Name:                   Microsoft Windows 10 Pro
+OS Version:                10.0.18362 N/A Build 18362
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+BIOS Version:              American Megatrends Inc. F4g, 2018-11-05
+System Boot Time:          2020-04-13, 17:33:40
+System Manufacturer:       Gigabyte Technology Co., Ltd.
+System Model:              X299 AORUS Ultra Gaming Pro
+System Type:               x64-based PC
+System Directory:          C:\WINDOWS\system32
+System Locale:             en-us;English (United States)
+
+sdkmanager
+26.1.1
+
+
+tools (avdmanager)
+  tools                                                                             | 26.1.1  | Android SDK Tools                                | tools\                                                                            
+
+platform-tools (adb)
+  platform-tools                                                                    | 29.0.6  | Android SDK Platform-Tools                       | platform-tools\                                                                   
+  platform-tools                                                                           | 29.0.6       | Android SDK Platform-Tools                                          
+
+emulator
+Android emulator version 30.0.5.0 (build_id 6306047) (CL:N/A)
+Copyright (C) 2006-2017 The Android Open Source Project and many others.
+This program is a derivative of the QEMU CPU emulator (www.qemu.org).
+
+  This software is licensed under the terms of the GNU General Public
+  License version 2, as published by the Free Software Foundation, and
+  may be copied, distributed, and modified under those terms.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  emulator                                                                          | 30.0.5  | Android Emulator                                 | emulator\                                                                         
+  emulator                                                                                 | 30.0.5       | Android Emulator                                                    
+
