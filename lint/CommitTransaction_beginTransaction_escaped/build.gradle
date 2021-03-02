@@ -1,28 +1,33 @@
 buildscript {
 	repositories {
+		google()
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.0.0'
+		classpath 'com.android.tools.build:gradle:4.1.2'
 	}
 }
 
 apply plugin: 'com.android.application'
 
+repositories {
+	google()
+	jcenter()
+}
+
 dependencies {
-	compile 'com.android.support:support-annotations:23.3.0'
-	compile 'com.android.support:design:23.3.0'
+	implementation 'com.android.support:support-annotations:28.0.0'
+	implementation 'com.android.support:design:28.0.0'
 }
 
 android {
-	buildToolsVersion "23.0.3"
-	compileSdkVersion 23
+	compileSdkVersion 28
 	defaultConfig {
-		minSdkVersion 10
+		minSdkVersion 14
 		targetSdkVersion 19
 	}
 	lintOptions {
-		check 'CommitTransaction' // only
+		checkOnly 'CommitTransaction'
 		//checkAllWarnings true
 	}
 }
