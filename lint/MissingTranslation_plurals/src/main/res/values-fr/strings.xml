@@ -1,0 +1,9 @@
+<resources>
+
+	<string name="translated">Translated</string>
+
+	<!-- Not translated: <string name="my_string"> -->
+
+	<!-- Not translated: <plurals name="my_plurals"> -->
+
+</resources>

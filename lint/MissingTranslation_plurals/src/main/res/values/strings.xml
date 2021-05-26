@@ -1,0 +1,12 @@
+<resources>
+
+	<string name="translated">Translated</string>
+
+	<string name="my_string">My String</string>
+
+	<plurals name="my_plurals">
+		<item quantity="one">My Plural</item>
+		<item quantity="other">My Plurals</item>
+	</plurals>
+
+</resources>

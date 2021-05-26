@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+    }
+}
+
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.repro"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+    defaultConfig {
+        resConfigs "en", "fr"
+    }
+    lintOptions {
+        // my_plurals doesn't fail in res/values/strings.xml
+        checkOnly "MissingTranslation"
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
