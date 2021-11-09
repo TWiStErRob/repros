@@ -1,0 +1,13 @@
+plugins {
+	id("com.android.library") version "4.2.2"
+	id("app.cash.paparazzi") version "0.8.0"
+}
+
+repositories {
+	google()
+	mavenCentral()
+}
+
+android {
+	compileSdkVersion 31
+}
