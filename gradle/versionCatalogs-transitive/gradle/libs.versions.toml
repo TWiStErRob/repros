@@ -1,0 +1,2 @@
+[libraries]
+g-a = { module = "g:a", version = "v" }
