@@ -1,0 +1,10 @@
+<lint>
+
+	<issue id="UnusedResources">
+
+		<!-- False positive, so suppress it. The string is used in :app -->
+		<ignore regexp="R\.string\.used" />
+
+	</issue>
+
+</lint>

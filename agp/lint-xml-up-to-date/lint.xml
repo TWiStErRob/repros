@@ -1,0 +1,9 @@
+<lint>
+
+	<issue id="UnusedResources">
+
+		<ignore regexp="R\.string\.unused_in_.*" />
+
+	</issue>
+
+</lint>

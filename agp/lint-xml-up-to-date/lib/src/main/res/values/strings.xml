@@ -1,0 +1,7 @@
+<resources>
+
+	<string name="used">Used</string>
+
+	<string name="unused_in_lib">Used in :lib</string>
+
+</resources>
