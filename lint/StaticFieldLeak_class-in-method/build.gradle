@@ -1,0 +1,24 @@
+buildscript {
+	repositories {
+		jcenter()
+		google()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:3.0.1'
+	}
+}
+
+apply plugin: 'com.android.application'
+
+android {
+	buildToolsVersion "27.0.2"
+	compileSdkVersion 27
+	defaultConfig {
+		minSdkVersion 14
+		targetSdkVersion 26
+	}
+	lintOptions {
+		check 'StaticFieldLeak' // only
+		//checkAllWarnings true
+	}
+}
