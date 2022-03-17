@@ -1,0 +1,50 @@
+buildscript {
+	repositories {
+		jcenter()
+		gradlePluginPortal()
+	}
+	dependencies {
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.41"
+		classpath "gradle.plugin.io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.0.0.RC7"
+	}
+}
+
+subprojects {
+	apply plugin: 'kotlin'
+
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		implementation "org.jetbrains.kotlin:kotlin-stdlib:1.2.41"
+		implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41"
+		implementation "org.jetbrains.kotlin:kotlin-reflect:1.2.41"
+
+		testImplementation "org.jetbrains.kotlin:kotlin-test:1.2.41"
+		testImplementation "org.jetbrains.kotlin:kotlin-test-junit:1.2.41"
+	}
+
+	tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinCompile) {
+		kotlinOptions {
+			allWarningsAsErrors = true
+			verbose = true
+			freeCompilerArgs += [ "-Werror" ]
+		}
+	}
+}
+
+subprojects {
+	apply plugin: "io.gitlab.arturbosch.detekt"
+
+	tasks.create("detekt") { dependsOn 'detektCheck' }
+	tasks.create("cleanDetekt") { dependsOn 'cleanDetektCheck' }
+
+	detekt {
+		version = "1.0.0.RC7"
+		defaultProfile {
+			input = file("src")
+			config = rootProject.file("config/detekt/detekt.yml")
+			filters = ".*/resources/.*"
+		}
+	}
+}

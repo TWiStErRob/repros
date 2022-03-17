@@ -1,0 +1,1 @@
+fun f() = Exception().printStackTrace()
