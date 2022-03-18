@@ -1,0 +1,26 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:1.5.0'
+	}
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+	maven { name 'glide'; url 'http://oss.sonatype.org/content/repositories/snapshots' }
+}
+dependencies {
+	compile 'com.github.bumptech.glide:glide:4.0.0-SNAPSHOT'
+}
+
+android {
+	buildToolsVersion "23.0.1"
+	compileSdkVersion 23
+	defaultConfig {
+		minSdkVersion 10
+		targetSdkVersion 19
+	}
+}
