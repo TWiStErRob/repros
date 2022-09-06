@@ -1,0 +1,4 @@
+/.idea/
+
+/self-hosted/node_modules/
+/self-hosted/package-lock.json

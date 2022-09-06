@@ -1,0 +1,9 @@
+{
+	"name": "renovate-repro-17635",
+	"scripts": {
+		"renovate": "renovate"
+	},
+	"devDependencies": {
+		"renovate": "32.190.4"
+	}
+}
