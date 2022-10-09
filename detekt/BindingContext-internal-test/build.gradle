@@ -1,0 +1,21 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.7.20"
+	id "io.gitlab.arturbosch.detekt" version "1.21.0"
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+detekt {
+   debug = true
+}
