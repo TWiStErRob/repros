@@ -1,0 +1,7 @@
+naming: 
+  BooleanPropertyNaming:
+    active: true
+
+style:
+  UseDataClass:
+    active: true
