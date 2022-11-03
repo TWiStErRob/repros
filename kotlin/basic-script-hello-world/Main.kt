@@ -17,11 +17,11 @@ fun main(args: Array<String>) {
     println("Program arguments: ${args.joinToString()}")
 
     if (args.isEmpty()) {
-        val file = File("default.kts")
+        val file = File("default.simplescript.kts")
 
         println(file.absolutePath)
 
-        val results = evalFile(File("default.kts"))
+        val results = evalFile(file)
 
         results.reports.forEach {
             if (it.severity > ScriptDiagnostic.Severity.DEBUG) {
