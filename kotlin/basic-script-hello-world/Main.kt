@@ -25,7 +25,8 @@ fun main(args: Array<String>) {
 
         results.reports.forEach {
             if (it.severity > ScriptDiagnostic.Severity.DEBUG) {
-                println(" : ${it.message}" + if (it.exception == null) "" else ": ${it.exception}")
+                val ex = it.exception
+                println(" : ${it.message}" + if (ex == null) "" else "\n${ex.stackTraceToString()}")
             }
         }
     }
