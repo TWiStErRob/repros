@@ -1,0 +1,10 @@
+name: project 1 ci
+on:
+  pull_request:
+    paths:
+      - 'project1/**'
+jobs:
+  build1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "some ci"'

@@ -1,0 +1,10 @@
+name: project 1 standin
+on:
+  pull_request:
+    paths-ignore:
+      - 'project1/**'
+jobs:
+  build1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "No build required"'
