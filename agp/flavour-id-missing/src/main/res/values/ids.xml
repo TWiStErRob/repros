@@ -1,0 +1,4 @@
+<resources>
+	<!-- Workaround, uncomment to make it work. -->
+	<!--<item type="id" name="image" />-->
+</resources>

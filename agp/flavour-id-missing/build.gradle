@@ -1,0 +1,64 @@
+buildscript {
+	repositories {
+		google()
+		mavenCentral()
+	}
+	dependencies {
+		// Using a property so that it's easy to toggle it from command line for quick repros.
+		classpath "com.android.tools.build:gradle:${findProperty("agpVersion") ?: "7.3.1"}"
+	}
+}
+apply plugin: "com.android.application"
+
+android {
+	namespace = "com.example"
+	compileSdkVersion = 33
+	defaultConfig {
+		minSdkVersion 14
+		targetSdkVersion 33
+	}
+	productFlavors {
+		flavor1 {
+			flavorDimensions 'default'
+			applicationId = "com.example.variant1"
+		}
+		// If flavor2 {} is removed, it works on 8.0.0-alpha08.
+		flavor2 {
+			flavorDimensions 'default'
+			applicationId = "com.example.variant2"
+		}
+	}
+}
+
+repositories {
+	google()
+	mavenCentral()
+}
+
+dependencies {
+	// If appcompat is removed, it works on 8.0.0-alpha08.
+	implementation("androidx.appcompat:appcompat:1.5.1") {
+		exclude group: "androidx.activity", module: "activity"
+		exclude group: "androidx.annotation", module: "annotation"
+		exclude group: "androidx.annotation", module: "annotation-experimental"
+		exclude group: "androidx.appcompat", module: "appcompat-resources"
+		exclude group: "androidx.collection", module: "collection"
+		exclude group: "androidx.concurrent", module: "concurrent-futures"
+		// If core is excluded there's a compile error in aapt, so it's inconclusive evidence.
+//		exclude group: "androidx.core", module: "core"
+		exclude group: "androidx.core", module: "core-ktx"
+		exclude group: "androidx.cursoradapter", module: "cursoradapter"
+		exclude group: "androidx.drawerlayout", module: "drawerlayout"
+		exclude group: "androidx.emoji2", module: "emoji2"
+		exclude group: "androidx.emoji2", module: "emoji2-views-helper"
+		exclude group: "androidx.fragment", module: "fragment"
+		exclude group: "androidx.lifecycle", module: "lifecycle-runtime"
+		exclude group: "androidx.lifecycle", module: "lifecycle-viewmodel"
+		exclude group: "androidx.resourceinspection", module: "resourceinspection-annotation"
+		exclude group: "androidx.savedstate", module: "savedstate"
+		exclude group: "androidx.versionedparcelable", module: "versionedparcelable"
+		exclude group: "org.jetbrains", module: "annotations"
+		exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib"
+		exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-common"
+	}
+}
