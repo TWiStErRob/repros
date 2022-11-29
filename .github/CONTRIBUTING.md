@@ -18,7 +18,9 @@
      * Google: `Repro for issuetracker.google.com/<num>`
      * JetBrains (YouTrack): `Repro for KT-<num>` or `Repro for IDEA-<num>`.
    * No more information needed as the info will be in the Third Party issue tracker or README.md in the worst case.
-   * An alternative for `Repro for` is `Workaround for`, in case it's not reproducing the issue, but demonstrating how to work around it.
+   * In case the project is not reproducing an issue, ther are alternatives for `Repro for`
+     * `Workaround for`: demonstrating how to work around an issue.
+     * `Demo for`: demonstrating something in general about the issue.
  * Push to remote.
  * Verify link in issue description's repro steps works as expected.
 
