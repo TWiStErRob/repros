@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@actions/glob": "0.1.0"
+  }
+}
