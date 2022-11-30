@@ -1,0 +1,56 @@
+buildscript {
+	repositories {
+		google()
+		mavenCentral()
+	}
+	dependencies {
+		classpath "com.android.tools.build:gradle:7.3.1"
+	}
+}
+apply plugin: "com.android.application"
+
+repositories {
+	google()
+	mavenCentral()
+}
+
+android { // this: com.android.build.api.dsl.ApplicationExtension : com.android.build.api.dsl.CommonExtension
+	namespace = "com.example"
+	compileSdkVersion = 33
+	defaultConfig {
+		minSdkVersion 14
+		targetSdkVersion 33
+	}
+
+//	// fun viewBinding(action: ViewBinding.() -> Unit) in CommonExtension
+//	viewBinding { // this: com.android.build.api.dsl.ViewBinding
+//		// Implementation: com.android.build.gradle.internal.dsl.ViewBindingOptionsImpl
+//		// setEnabled(true) from var isEnabled: Boolean, paired with isEnabled()
+//		enabled = true
+//	}
+
+//	// fun viewBinding(action: ViewBinding.() -> Unit) in CommonExtension
+//	viewBinding { // this: com.android.build.api.dsl.ViewBinding
+//		// Implementation: com.android.build.gradle.internal.dsl.ViewBindingOptionsImpl
+//		// from var enable: Boolean, paired with getEnable()
+//		enable = true
+//	}
+	buildFeatures { // this: com.android.build.api.dsl.ApplicationBuildFeatures : com.android.build.api.dsl.BuildFeatures
+//		// setViewBinding(true) from var viewBinding: Boolean? in BuildFeatures
+//		viewBinding = true
+
+		// fun viewBinding(action: ViewBinding.() -> Unit) in CommonExtension
+		viewBinding { // this: com.android.build.api.dsl.ViewBinding
+			// Implementation: com.android.build.gradle.internal.dsl.ViewBindingOptionsImpl
+			// setEnable(true) from var enable: Boolean, paired with getEnable()
+			enable = true
+		}
+
+//		// fun viewBinding(action: ViewBinding.() -> Unit) in CommonExtension
+//		viewBinding { // this: com.android.build.api.dsl.ViewBinding
+//			// Implementation: com.android.build.gradle.internal.dsl.ViewBindingOptionsImpl
+//			// setEnabled(true) from var isEnabled: Boolean, paired with isEnabled()
+//			enabled = true
+//		}
+	}
+}
