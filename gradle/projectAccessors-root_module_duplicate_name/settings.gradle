@@ -1,0 +1,4 @@
+rootProject.name = "myname"
+include(":myname")
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
