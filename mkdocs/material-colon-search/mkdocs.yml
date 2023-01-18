@@ -1,0 +1,7 @@
+site_name: Material Colon Search
+theme:
+  name: material
+plugins:
+  - info
+  - search:
+      separator: '[\s\-:]+'
