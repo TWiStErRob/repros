@@ -1,0 +1,54 @@
+graph TD
+    subgraph "/settings-pluginsCNFE/plugins/"
+        subgraph ":plugin-build"
+            com.example.build("id(com.example.build)")
+            com.example.BuildPlugin
+            com.example.build -- "implementation-class" --> com.example.BuildPlugin
+        end
+        subgraph ":plugin-settings"
+            com.example.settings("id(com.example.settings)")
+            com.example.SettingsPlugin
+            com.example.settings -- "implementation-class" --> com.example.SettingsPlugin
+        end
+        subgraph ":shared-lib"
+            com.example.AndroidUtil
+            com.example.OtherClass
+        end
+        :plugin-build -- "implementation" --> :shared-lib
+        :plugin-settings -- "implementation" --> :shared-lib
+        com.example.BuildPlugin -- "uses" --> com.example.OtherClass
+        com.example.BuildPlugin -- "inside plugins.withId" --> com.example.AndroidUtil
+        com.example.SettingsPlugin -- "uses" --> com.example.OtherClass
+    end
+    :shared-lib -. "compileOnly" .-> com.android.tools.build:gradle
+    com.example.AndroidUtil -- "uses" --> com.android.build.api.dsl.LibraryExtension
+    subgraph "com.android.tools.build:gradle"
+        com.android.library("id(com.android.library)")
+        com.android.build.api.dsl.LibraryExtension
+        com.android.library -- "provides" --> com.android.build.api.dsl.LibraryExtension
+    end
+    subgraph "/settings-pluginsCNFE/"
+        build.gradle.kts
+        settings.gradle.kts
+    end
+    settings.gradle.kts == "plugins - local maven()" ==> com.example.settings
+    build.gradle.kts == "plugins - local maven()" ==> com.example.build
+    build.gradle.kts == "plugins - google()" ==> com.android.library
+
+    classDef Plugin fill:#fee
+    class com.example.settings Plugin
+    class com.example.build Plugin
+    class com.android.library Plugin
+    classDef Class fill:#ffe
+    class com.example.BuildPlugin Class
+    class com.example.SettingsPlugin Class
+    class com.example.AndroidUtil Class
+    class com.example.OtherClass Class
+    class com.android.build.api.dsl.LibraryExtension Class
+    classDef Library fill:#f5f5ff
+    class :plugin-build Library
+    class :plugin-settings Library
+    class :shared-lib Library
+    class com.android.tools.build:gradle Library
+    linkStyle 3 stroke:red
+    linkStyle 6 stroke:red
