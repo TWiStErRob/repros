@@ -1,0 +1,45 @@
+plugins {
+	id 'com.android.library' version '7.3.1'
+}
+
+android {
+	namespace 'com.example'
+	compileSdk 33
+	defaultConfig {
+		minSdk 21
+		targetSdk 33
+		versionCode 1
+		versionName "1.0"
+
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
+	}
+
+	testOptions {
+		managedDevices {
+			devices {
+				pixel2api33(com.android.build.api.dsl.ManagedVirtualDevice) {
+					device = "Pixel 2"
+					apiLevel = 33 // Gradle Managed Devices only supports API levels 27 and higher.
+					systemImageSource = "google"
+				}
+			}
+		}
+	}
+}
+
+dependencies {
+	def mockito = "5.1.0"
+	testImplementation("org.mockito:mockito-inline:${mockito}")
+	testImplementation("junit:junit:4.13.2")
+
+	androidTestImplementation("org.mockito:mockito-android:${mockito}")
+	androidTestImplementation("junit:junit:4.13.2")
+	androidTestImplementation("androidx.test:monitor:1.6.1")
+	androidTestImplementation("androidx.test:runner:1.5.2")
+	androidTestRuntimeOnly("org.jetbrains.kotlin:kotlin-stdlib:1.8.0")
+}
