@@ -1,0 +1,8 @@
+{
+	"dependencies": {
+		"protractor": "7.0.0"
+	},
+	"devDependencies": {
+		"webdriver-manager": "13.0.1"
+	}
+}
