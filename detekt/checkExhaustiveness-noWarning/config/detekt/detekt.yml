@@ -9,8 +9,8 @@ build:
 
 config:
   validation: true
-  warningsAsErrors: false
-  checkExhaustiveness: false
+  warningsAsErrors: true
+  checkExhaustiveness: true
   # when writing own rules with new properties, exclude the property path e.g.: 'my_rule_set,.*>.*>[my_property]'
   excludes: ''
 
@@ -732,11 +732,11 @@ formatting:
   AnnotationSpacing:
     active: true
     autoCorrect: true
-  ArgumentListWrapping:
-    active: true
-    autoCorrect: true
-    indentSize: 4
-    maxLineLength: 120
+#  ArgumentListWrapping:
+#    active: true
+#    autoCorrect: true
+#    indentSize: 4
+#    maxLineLength: 120
   BlockCommentInitialStarAlignment:
     active: false
     autoCorrect: true
