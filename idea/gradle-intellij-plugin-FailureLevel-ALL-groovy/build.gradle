@@ -1,0 +1,15 @@
+import org.jetbrains.intellij.tasks.RunPluginVerifierTask
+
+plugins {
+	id("org.jetbrains.intellij") version "1.13.0"
+}
+
+intellij {
+	version = "2022.1.2"
+	pluginName = "TEST"
+}
+
+runPluginVerifier {
+	ideVersions = [ "IC-2022.1.2" ]
+	failureLevel = RunPluginVerifierTask.FailureLevel.Companion.getALL()
+}
