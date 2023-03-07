@@ -1,0 +1,90 @@
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+    	jcenter()
+    }
+    dependencies {
+        classpath 'net.sf.proguard:proguard-gradle:5.2.1'
+    }
+}
+
+repositories {
+	jcenter()
+}
+dependencies {
+	compile 'org.slf4j:slf4j-api:1.7.21'
+	compile 'com.google.android:support-v4:r7'
+	compileOnly('com.google.android:android:4.1.1.4') {
+		transitive false // transitive deps are not used, and just causes warnings anyway
+	}
+	runtime 'org.slf4j:slf4j-simple:1.7.21'
+}
+
+task fatjar(type: Jar, dependsOn: [':compileJava', ':processResources']) {
+	// This way it is easier to see what really got removed after proguarding
+	description 'Bundle everything up into a fat jar.'
+	tasks.assemble.dependsOn it
+    from files(sourceSets.main.output.classesDir)
+    from configurations.runtime.resolve().collect { zipTree(it) }
+}
+
+task proguard(type: proguard.gradle.ProGuardTask, dependsOn: [':fatjar']) {
+	tasks.assemble.dependsOn it
+    configuration 'src/main/config.pro'
+    //forceprocessing
+
+    // diagnostic output
+    verbose
+	def proBase = new File(project.buildDir, 'proguard')
+    printusage new File(proBase, 'usage.txt')
+	printmapping new File(proBase, 'mapping.txt')
+	printconfiguration new File(proBase, 'configuration.pro')
+	printseeds new File(proBase, 'seeds.txt')
+	dump new File(proBase, 'dump.txt')
+
+    injars tasks.fatjar.archivePath // ~ configurations.compile.resolve().each { injars it }
+	outjars new File(proBase, tasks.fatjar.archivePath.name)
+
+	libraryjars "${System.properties['java.home']}/lib/rt.jar"
+	def compileOnly = configurations.compileOnly.resolve()
+	compileOnly.removeAll(configurations.compile.resolve())
+	compileOnly.each { libraryjars it }
+}
+
+def extractedFolder = new File(project.buildDir, 'extracted');
+task extractProguarded(type: Copy, dependsOn: [':proguard']) {
+	description 'Intermediate task to extract the result of proguard as preparation to decompile.'
+	from zipTree(tasks.proguard.outJarFiles[0])
+	exclude 'android/support/**' // don't care about support lib, want to get rid of logging
+	into extractedFolder
+	doFirst { extractedFolder.mkdirs() }
+}
+
+def decompiledFolder = new File(project.buildDir, 'decompiled'); decompiledFolder.mkdirs();
+task decompileJavap(type: Exec, dependsOn: [':extractProguarded']) {
+	// use this in case you don't have a JAD, javap should be available in any JDK
+	description 'Decompile extracted class files that went through proguard already using javap.'
+	inputs.dir extractedFolder
+	outputs.dir decompiledFolder
+	executable 'javap'
+	args('-v -l -p -c -s'.split(' '))
+	args(['-d', decompiledFolder])
+	args(["${extractedFolder}/*.class"])
+	def output = new File(decompiledFolder, 'decompiled.bytecode')
+	doFirst { standardOutput = new FileOutputStream(output) }
+	doFirst { decompiledFolder.mkdirs() }
+	doLast { standardOutput.close() }
+	doLast { println "See ${output} if it contains org.slf4j.Logger references." }
+}
+task decompileJad(type: Exec, dependsOn: [':extractProguarded']) {
+	// use this in case you want easier to read output, you have to modify the execute to point to the right place
+	description 'Decompile extracted class files that went through proguard already using jad.'
+	inputs.dir extractedFolder
+	outputs.dir decompiledFolder
+	executable 'P:\\tools\\ide\\eclipse\\dropins\\decompile\\jad-1.5.8g-win\\jad.exe'
+	args('-dead -noconv -nocast -noclass -a -r -o -s java'.split(' '))
+	args(['-d', decompiledFolder])
+	args(["${extractedFolder}/**/*.class"])
+	doLast { println "See ${decompiledFolder} if it contains org.slf4j.Logger references." }
+}
