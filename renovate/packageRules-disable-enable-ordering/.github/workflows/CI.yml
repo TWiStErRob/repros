@@ -1,0 +1,35 @@
+name: CI
+on: push
+
+jobs:
+  check:
+    name: "🛠️ ${{ matrix.name }}"
+    runs-on: ubuntu-22.04
+    timeout-minutes: 1
+    steps:
+      - run: echo "Running in response to a ${{ github.event_name }} event, building ${{ github.event.compare }} changes."
+
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v3
+
+      - name: "Check ${{ matrix.name }} (${{ matrix.gradle }})."
+        run: >
+          ./gradlew
+          --no-daemon
+          testOnGradle
+          -Ptest.gradle.version=${{ matrix.gradle }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "Gradle 6.5+ - outdated, latest 6.5.1"
+            gradle: '6.5'
+          - name: "Gradle 6.6+ - up to date"
+            gradle: '6.6.1'
+          - name: "Gradle 6.8+ - outdated, latest 6.8.3"
+            gradle: '6.8.2'
+          - name: "Gradle 6.9+ - outdated, latest 6.9.4"
+            gradle: '6.9.3'
+          - name: "Gradle 7.x - outdated, latest 7.6.1"
+            gradle: '7.4.2'

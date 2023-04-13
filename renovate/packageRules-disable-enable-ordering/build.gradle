@@ -1,0 +1,5 @@
+tasks.register("testOnGradle") {
+	doFirst {
+		println(project.property("test.gradle.version"))
+	}
+}
