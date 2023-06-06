@@ -1,0 +1,16 @@
+plugins {
+	id("org.gradle.groovy")
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation("org.codehaus.groovy:groovy-all:2.4.14")
+	testImplementation("junit:junit:4.13.2")
+}
+
+test.afterTest { desc, result ->
+	println("${desc.className} > ${desc.name}: ${result.resultType}")
+}
