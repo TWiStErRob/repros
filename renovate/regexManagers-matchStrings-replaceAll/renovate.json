@@ -1,0 +1,18 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		":dependencyDashboard",
+		":disableRateLimiting"
+	],
+	"regexManagers": [
+		{
+			"fileMatch": ["^code\\.txt$"],
+			"datasourceTemplate": "gradle-version",
+			"depNameTemplate": "gradle",
+			"matchStrings": [
+				"AGP (?:.*) on Gradle (?:.*)(?: - plugin)? \\((?:.*) on (?<currentValue>.*)\\) Test Results (?:XMLs|HTMLs|HTML)"
+			],
+			"versioningTemplate": "gradle"
+		}
+	]
+}
