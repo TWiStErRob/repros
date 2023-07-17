@@ -1,0 +1,23 @@
+println(this.class.protectionDomain.codeSource.location)
+
+allprojects { p ->
+	p.afterEvaluate {
+		println("${p}: ${loc(p)}")
+	}
+}
+
+static def loc(Project p) {
+	def bs = p.buildScriptSource
+	def script = p.asDynamicObject.beforeConvention?.bean
+	"""
+		className: ${bs.className}
+		resource: ${bs.resource}
+		contentHash: ${bs.resource.contentHash}
+		fileName: ${bs.fileName}
+		displayName: ${bs.displayName}
+		longDisplayName: ${bs.longDisplayName}
+		shortDisplayName: ${bs.shortDisplayName}
+		script: ${script}
+		script.location: ${if (script) script.class.protectionDomain.codeSource.location}
+	""".stripIndent()
+}
