@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+for (int i in 1..50) {
+	// Uses Conventions which are deprecated and nag.
+	// Uses BasePluginConvention.setArchivesBaseName(String) which is deprecated and nags.
+	archivesBaseName = 'trigger-nagging'
+}
+
+// ClosureBackedAction type is deprecated, nagging is in the class initializer.
+org.gradle.util.ClosureBackedAction.of {}
