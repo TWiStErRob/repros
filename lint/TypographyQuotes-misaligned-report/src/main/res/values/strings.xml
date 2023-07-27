@@ -1,0 +1,29 @@
+<resources>
+
+	<string name="single_line">This\'s correctly positioned.</string>
+
+	<string name="strange_wrapped_first"
+		>As\'s this one.
+		Even if strangely wrapped.</string>
+
+	<string name="strange_wrapped_second"
+		>Strangely wrapped highlight is on the wrong line!
+		Find\'s it, but wrong position.</string>
+
+	<string name="eol_wrapped_first">It's not broken,
+		when more normally wrapped and the problem is on the first line.</string>
+
+	<string name="eol_wrapped_second">It also breaks,
+		if it\'s more normally wrapped.</string>
+
+	<string name="formatted_first">
+		This isn\'t borked.
+		The highlight is correct.
+	</string>
+
+	<string name="formatted_second">
+		But, this should not be highlighted,
+		as the problem ain't in that line.
+	</string>
+
+</resources>
