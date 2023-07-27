@@ -1,0 +1,22 @@
+<resources>
+
+	<string name="single_control">This\'s found.</string>
+
+	<string name="single_line_2">This\'s not found, because it\'s in a pair.</string>
+
+	<string name="single_line_3">This\'s not found, because it\'s more than just'one.</string>
+
+	<string name="multi_line_2">
+		Even then the problem\'s are separate
+		by new lines they\'re ignored.
+	</string>
+
+	<string name="multi_line_5">
+		Even then the problem\'s are separate
+		by new lines they\'re ignored.
+		Doesn\'t matter how many,
+		they\'re just ignored.
+		Just\' one more to make it 5.
+	</string>
+
+</resources>
