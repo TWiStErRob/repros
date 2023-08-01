@@ -1,0 +1,21 @@
+Index: settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+--- a/settings.gradle.kts	(revision c50ed690da3794bf5e5a3bbbe56e15533f7cd0c8)
++++ b/settings.gradle.kts	(date 1690896124466)
+@@ -2,8 +2,10 @@
+ 
+ rootProject.name = "detekt"
+ 
+-includeBuild("build-logic")
+-includeBuild("detekt-gradle-plugin")
++pluginManagement {
++    includeBuild("build-logic")
++    includeBuild("detekt-gradle-plugin")
++}
+ 
+ include("code-coverage-report")
+ include("detekt-api")

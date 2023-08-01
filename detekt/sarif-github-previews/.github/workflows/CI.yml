@@ -22,6 +22,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: actions/checkout@v3
+        with:
+          path: detekt
+          repository: 3flex/detekt
+          ref: 4165-fix
+
+      # Workaround for
+      # > Build file '...\sarif-github-previews\detekt\build.gradle.kts' line: 6
+      # > Plugin [id: 'releasing'] was not found in any of the following sources
+      - run: git apply ${{ github.workspace }}/.github/workflows/includedBuild-fix.patch
+        working-directory: detekt
+        # Ignore the following error, if it doesn't apply, it's very likely already applied.
+        # > error: patch failed: settings.gradle.kts:2
+        # > error: settings.gradle.kts: patch does not apply
+        continue-on-error: true
+
       - run: ./gradlew detekt
 
       - uses: actions/upload-artifact@v3
