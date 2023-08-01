@@ -1,0 +1,44 @@
+name: "CI"
+
+on:
+  push
+
+jobs:
+  detekt:
+    runs-on: ${{ matrix.os }}-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows
+          - ubuntu
+          - macos
+
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: ./gradlew detekt
+
+      - uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: detekt-reports-${{ matrix.os }}
+          path: |
+            **/build/reports/detekt/
+
+      - uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/detekt.sarif
+          category: detekt-${{ matrix.os }}-root
+
+      - uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: subproject/build/reports/detekt/detekt.sarif
+          category: detekt-${{ matrix.os }}-sub

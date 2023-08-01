@@ -1,0 +1,12 @@
+console-reports:
+  exclude:
+    - 'ProjectStatisticsReport'
+    - 'ComplexityReport'
+    #- 'NotificationReport'
+    - 'FindingsReport'
+    - 'FileBasedFindingsReport'
+    #- 'LiteFindingsReport'
+
+style:
+  MagicNumber:
+    active: true
