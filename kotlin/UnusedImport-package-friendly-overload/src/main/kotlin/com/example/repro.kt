@@ -1,5 +1,3 @@
-@file:Suppress("UnusedImport")
-
 package com.example
 
 import com.example.assertThat
