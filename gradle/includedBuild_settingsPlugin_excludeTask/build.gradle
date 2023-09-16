@@ -1,0 +1,1 @@
+tasks.register("outer") { doFirst { println("Executed.") } }
