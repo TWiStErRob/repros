@@ -1,5 +1,5 @@
 plugins {
-	id("org.jetbrains.kotlin.jvm") version "1.8.22"
+	id("org.jetbrains.kotlin.jvm") version "1.9.10"
 }
 
 // Dependencies so the repro can be imported into IDE and debugged with sources.
@@ -7,5 +7,5 @@ repositories {
 	mavenCentral()
 }
 dependencies {
-	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22")
+	implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10")
 }
