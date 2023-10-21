@@ -1,0 +1,39 @@
+name: "CI"
+
+on: push
+
+jobs:
+
+  instrumentation:
+    name: "Instrumentation on ${{ matrix.api }}"
+
+    uses: TWiStErRob/github-workflows/.github/workflows/instrumentation.yml@v1
+    with:
+      android-api: ${{ matrix.api }}
+      timeout-minutes: 10
+      script: ./gradlew --no-daemon --stacktrace :connectedCheck
+
+    permissions:
+      contents: read
+      checks: write
+      statuses: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # The API level, see https://apilevels.com/.
+        api:
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 29
+          - 30
+          - 31
+          - 32
+          - 33
+          - 34
