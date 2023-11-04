@@ -1,0 +1,20 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended"
+	],
+	"packageRules": [
+		{
+			"groupName": "Detekt monorepo",
+			"description": "Group together all dependencies of Detekt.",
+			"matchSourceUrlPrefixes": [
+				"https://github.com/detekt/detekt"
+			],
+			"matchPackageNames": [
+				"io.gitlab.arturbosch.detekt",
+				"io.gitlab.arturbosch.detekt:detekt-gradle-plugin",
+				"io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin"
+			]
+		}
+	]
+}

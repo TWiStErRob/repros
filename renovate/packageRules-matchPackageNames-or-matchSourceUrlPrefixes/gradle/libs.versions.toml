@@ -1,0 +1,8 @@
+[versions]
+detekt = "1.23.1"
+
+[libraries]
+detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+
+[plugins]
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
