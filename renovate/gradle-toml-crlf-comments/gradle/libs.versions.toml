@@ -1,0 +1,9 @@
+[versions]
+# https://github.com/mockito/mockito/releases
+mockito = "5.3.1"
+mockito-kotlin = "5.0.0"
+
+[libraries]
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockito" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
