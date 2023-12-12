@@ -1,0 +1,6 @@
+println("Configuring ${project}")
+tasks.register("build") {
+	doFirst {
+		println("Building ${project}")
+	}
+}
