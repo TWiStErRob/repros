@@ -1,5 +1,5 @@
 plugins {
-  id "java" // or "java-library"
+  id("java") // or "java-library"
 }
 repositories {
   mavenCentral()
