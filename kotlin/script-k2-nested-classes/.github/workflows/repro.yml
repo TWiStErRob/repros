@@ -1,0 +1,9 @@
+on: push
+jobs:
+  repro:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: java -version
+      - run: kotlin -version
+      - run: kotlin script.main.kts
