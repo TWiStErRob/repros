@@ -1,0 +1,22 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended"
+	],
+	"packageRules": [
+		{
+			"groupName": "Detekt",
+			"matchPackageNames": [
+				"io.gitlab.arturbosch.detekt",
+				"io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
+			]
+		},
+		{
+			"groupName": "Android Gradle Plugin",
+			"matchPackageNames": [
+				"com.android.tools.build:gradle",
+				"com.android.application"
+			]
+		}
+	]
+}
