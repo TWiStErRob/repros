@@ -1,0 +1,2 @@
+[libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version = "1.9.21" }
