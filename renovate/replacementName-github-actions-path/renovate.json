@@ -1,0 +1,11 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"packageRules": [
+		{
+			"matchManagers": ["github-actions"],
+			"matchPackageNames": ["gradle/gradle-build-action"],
+			"replacementName": "gradle/actions/setup-gradle",
+			"replacementVersion": "3.0.0"
+		}
+	]
+}
