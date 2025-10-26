@@ -1,0 +1,36 @@
+import io.micronaut.gradle.MicronautRuntime
+import io.micronaut.gradle.MicronautTestRuntime
+
+plugins {
+	id("org.jetbrains.kotlin.jvm") version "2.2.21"
+	id("com.google.devtools.ksp") version "2.3.0"
+	id("io.micronaut.minimal.application") version "4.6.0"
+}
+
+kotlin {
+	jvmToolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+dependencies {
+	runtimeOnly("org.yaml:snakeyaml:2.5")
+	implementation("io.micronaut:micronaut-http-client")
+	implementation("io.micronaut.serde:micronaut-serde-jackson")
+
+	implementation("org.slf4j:slf4j-api:2.0.17")
+	runtimeOnly("org.apache.logging.log4j:log4j-slf4j2-impl:2.25.2")
+}
+
+micronaut {
+	version = "4.10.0"
+	runtime(MicronautRuntime.HTTP_SERVER_JDK)
+	testRuntime(MicronautTestRuntime.JUNIT_5)
+}
+
+tasks.named("test", Test) {
+	testLogging {
+		events(org.gradle.api.tasks.testing.logging.TestLogEvent.values())
+		exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+	}
+}

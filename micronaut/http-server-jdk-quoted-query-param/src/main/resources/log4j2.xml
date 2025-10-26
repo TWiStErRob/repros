@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration strict="true">
+
+	<Appenders>
+		<Appender name="console" type="Console">
+			<Layout type="PatternLayout" pattern="%date{ISO8601} %-5level [%thread] %message%n%throwable" />
+		</Appender>
+	</Appenders>
+
+	<Loggers>
+		<Root level="ALL">
+			<AppenderRef ref="console" />
+		</Root>
+
+		<!-- Tighten some logs. -->
+		<Logger name="io.micronaut.context" level="INFO" />
+		<Logger name="io.micronaut.inject" level="DEBUG" />
+	</Loggers>
+
+</Configuration>
