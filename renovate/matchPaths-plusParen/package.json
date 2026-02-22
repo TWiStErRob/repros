@@ -1,5 +1,5 @@
 {
 	"dependencies": {
-		"minimatch": "5.1.0"
+		"minimatch": "10.2.1"
 	}
 }
