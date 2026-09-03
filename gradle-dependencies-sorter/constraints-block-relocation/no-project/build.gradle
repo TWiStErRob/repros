@@ -1,0 +1,14 @@
+plugins {
+    id("java")
+    id("com.squareup.sort-dependencies")
+}
+
+dependencies {
+    compileOnly("org.example:compile:1")
+
+    testImplementation("org.example:test:1")
+
+    constraints {
+        implementation("org.example:constraint:1")
+    }
+}

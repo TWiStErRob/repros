@@ -1,0 +1,16 @@
+pluginManagement {
+    plugins {
+        id("com.squareup.sort-dependencies") version "0.21.0"
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
+
+rootProject.name = "gradle-dependencies-sorter-constraints-relocation"
+
+include(":no-project")
+include(":project-last")
