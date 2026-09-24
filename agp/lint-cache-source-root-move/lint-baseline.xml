@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 9.4.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.4.1)" variant="all" version="9.4.1">
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toColorInt` instead?"
+        errorLine1="fun example(): Int = Color.parseColor(&quot;#ffffff&quot;)"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/Example.kt"
+            line="5"
+            column="22"/>
+    </issue>
+
+</issues>
